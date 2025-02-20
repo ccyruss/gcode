@@ -1,4 +1,5 @@
 <?php 
+    require_once('functions.php');
 
     // Check it, is there a any request.
     if($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -8,13 +9,25 @@
         // Explode the taken values.
         $codes = explode(";", $g_codes);
 
+        // Check the program name.
+        program_name($codes[0]);
+
+
+
+
         // List of taken values.
         foreach($codes as $code) {
+            $line_number++;
+
+
             // These will checking by function here.
-            echo $code . "<br>";
+            // echo $line_number . " ".  $code . "<br>";
 
             // The functions will give all result to us.   
         }
+
+        check_codes($g_codes);
+
     }
 
 ?>
@@ -36,7 +49,16 @@
             <form action="" method="POST">
                 <div class="mb-3">
                     <label for="gcode" class="form-label">Enter G Codes:</label>
-                    <textarea id="gcode" name="gcode" class="form-control" rows="4" required></textarea>
+                    <textarea id="gcode" name="gcode" class="form-control" rows="10" required>
+O1234;
+G54 G40 G80;
+M03;
+T0101;
+G96 S400 F0.1;
+G97 S1200;
+G01 X0 Z0;
+
+                    </textarea>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Encoder</button>
             </form>
@@ -51,7 +73,7 @@
 
 
     <footer class="text-center ">
-        <p>Developed by <a href="#">Cahit Çelebi</a></p>
+        <p>Developed by <a href="#">Cahit Celebi</a></p>
     </footer>
     
     </body>
