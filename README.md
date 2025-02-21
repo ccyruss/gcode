@@ -1,1 +1,1 @@
-# gcode
+# G Code Encoder
