@@ -57,6 +57,7 @@ T0101;
 G96 S400 F0.1;
 G97 S1200;
 G01 X0 Z0;
+G01 X10 Z-5;
 
                     </textarea>
                 </div>
@@ -72,8 +73,9 @@ G01 X0 Z0;
     </div>
 
 
-    <footer class="text-center ">
-        <p>Developed by <a href="#">Cahit Celebi</a></p>
+    <footer class="text-center">
+        <p>Developed by <a target="_blank" href="https://www.linkedin.com/in/cahitc/">Cahit Celebi</a></p>
+        <p class="small">Open Source <a target="_blank" href="https://github.com/ccyruss/gcode">Project</a>.</p>
     </footer>
     
     </body>

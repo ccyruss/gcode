@@ -54,6 +54,7 @@ function check_codes($val) {
 
     foreach($val as $code) {
 
+        // Here is starter codes
         $starter_codes = explode('G01', $code)[0];
 
         $is_there_m3 = str_contains($starter_codes, "M03");
@@ -75,8 +76,35 @@ function check_codes($val) {
         $is_there_g96 = str_contains($starter_codes, "G96");
         $is_there_g97 = str_contains($starter_codes, "G97");
 
+        // Here is main codes
+        $lines = preg_split("/\r\n|\r|\n/", $code);
+        $g01_lines = [];
+        $g00_lines = [];
+
+
+        $g1_lines = 0;
+        $g0_lines = 0;
+
+
+        foreach($lines as $line) {
+            $g1_lines++;
+            if(str_starts_with(trim($line), 'G01')) {
+                $g01_lines[] = $line . $g1_lines;
+            }
+        }
+
+        foreach($lines as $line) {
+            $g0_lines++;
+            if(str_starts_with(trim($line), 'G00')) {
+                $g00_lines[] = $line . $g0_lines;
+            }
+        }
+
+        echo implode("\n", $g01_lines);
+        echo implode("\n", $g00_lines);
     }
 
+    // Check starter codes
     if($is_there_g40 || $is_there_g80) {
         $output .= "G40 or G80 detected.<br>";
     }else {
@@ -87,12 +115,6 @@ function check_codes($val) {
         $output .= "Reference is detected.<br>";
     }else {
         $output .= "Reference is not detected.<br>";
-    }
-    
-    if($is_there_g54) {
-        $output .= "G96 detected.<br>";
-    }else {
-        $output .= "G96 not detected.<br>";
     }
 
     if($is_there_g96) {
@@ -122,6 +144,8 @@ function check_codes($val) {
     }else {
         $output .= "There is no T0. You need it.<br>";
     }
+
+    
 
 echo $output . "<br>";
 
