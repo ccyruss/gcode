@@ -12,22 +12,7 @@
         // Check the program name.
         program_name($codes[0]);
 
-
-
-
-        // List of taken values.
-        foreach($codes as $code) {
-            $line_number++;
-
-
-            // These will checking by function here.
-            // echo $line_number . " ".  $code . "<br>";
-
-            // The functions will give all result to us.   
-        }
-
         check_codes($g_codes);
-
     }
 
 ?>
@@ -57,12 +42,48 @@ T0101;
 G96 S400 F0.1;
 G97 S1200;
 G01 X0 Z0;
-G01 X10 Z-5;
+G01 X50 Z0;
+G01 X50 Z-50;
+G01 X80 Z-50;
+G01 X80 Z-200;
 
                     </textarea>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Encoder</button>
             </form>
+        </div>
+
+        <div class="outout">
+            
+            <?php
+
+            echo $output;
+
+            
+            // $clean_output = trim($output);
+            // $outputs = explode(".", $clean_output);
+
+            // foreach($outputs as $out) {
+            //     echo '<div class="alert alert-danger" role="alert">';
+            //     echo trim($out);
+            //     echo '</div>';
+            // }
+            
+            ?>
+        </div>
+
+        <div class="svg-container" style="margin-top:3rem;height: 600px; width: 100%; display: flex; justify-content: center; align-items: center; background-color: #f8f8f8; overflow: hidden;">
+            <svg viewBox="-500 -500 1000 1000" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; max-width: 1000px; max-height: 1000px; border: 1px solid #ccc;">
+                <line style="opacity:0.4;" x1="-500" y1="0" x2="500" y2="0" stroke="black" stroke-width="2"/> 
+                <line style="opacity:0.4;" x1="0" y1="-500" x2="0" y2="500" stroke="black" stroke-width="2"/> 
+
+                <circle cx="0" cy="0" r="5" fill="red"/>
+                <?php 
+                
+                 echo coord_to_svg($g01_lines);
+                
+                ?>
+            </svg>
         </div>
     
         <div class="mt-4">
