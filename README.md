@@ -28,3 +28,5 @@ G Code Encoder is a powerful tool designed to analyze, optimize, and secure G co
 👉 GitHub Repo: G Code Encoder
 
 Try G Code Encoder now for safe, accurate, and efficient CNC programming! 🛠️
+
+<img src="https://github.com/ccyruss/gcode/blob/main/gcodee.png">
