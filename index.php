@@ -1,10 +1,25 @@
 <?php 
     require_once('functions.php');
 
+
+
+
+    $output = "";
+
     // Check it, is there a any request.
     if($_SERVER['REQUEST_METHOD'] == "POST") {
+
+
         // Take all values
         $g_codes = $_POST['gcode'];
+
+        $lines = explode("\n", $g_codes);
+        $lines = array_filter(array_map('trim', $lines)); 
+        $input = implode("\n", $lines);
+
+        // sessions
+        $_SESSION['active_code'] = $input;
+
 
         // Explode the taken values.
         $codes = explode(";", $g_codes);
@@ -14,6 +29,10 @@
 
         check_codes($g_codes);
     }
+
+
+
+
 
 ?>
 
@@ -28,6 +47,7 @@
 <body class="bg-light">
 
     <div class="container py-5">
+    <div class="alert alert-warning">Program sadede CNC Torna G kodlarını analiz eder.</div>
         <h1 class="text-center mb-4">G Code Encoder</h1>
     
         <div class="card p-4">
@@ -35,6 +55,13 @@
                 <div class="mb-3">
                     <label for="gcode" class="form-label">Enter G Codes:</label>
                     <textarea id="gcode" name="gcode" class="form-control" rows="10" required>
+<?php
+                    
+if(isset($_SESSION['active_code'])) {
+echo $_SESSION['active_code'];
+}else {
+
+?>
 O1234;
 G54 G40 G80;
 M03;
@@ -46,10 +73,15 @@ G01 X50 Z0;
 G01 X50 Z-50;
 G01 X80 Z-50;
 G01 X80 Z-200;
+M05;
+<?php
+                    
+}?>
+
 
                     </textarea>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Encoder</button>
+                <button id="test" type="submit" class="btn btn-primary w-100">Encoder</button>
             </form>
         </div>
 
@@ -98,6 +130,12 @@ G01 X80 Z-200;
         <p>Developed by <a target="_blank" href="https://www.linkedin.com/in/cahitc/">Cahit Celebi</a></p>
         <p class="small">Open Source <a target="_blank" href="https://github.com/ccyruss/gcode">Project</a>.</p>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $("#test")
+    </script>
     
     </body>
 </html>
