@@ -1,6 +1,6 @@
 #  G Code Encoder
 
-[![Demoyu Gör](https://img.shields.io/badge/Demoya%20Ulaş-3498db?style=for-the-badge&logo=google-chrome&logoColor=white)](https://gcodeencoder.celebitech.com/)
+[![Demoyu Gör](https://img.shields.io/badge/Demo-3498db?style=for-the-badge&logo=google-chrome&logoColor=white)](https://gcodeencoder.celebitech.com/)
 
 
 G Code Encoder is a powerful tool designed to analyze, optimize, and secure G codes used in CNC programming. Created for CNC operators, engineers, and manufacturing professionals, this tool helps you run your codes more efficiently and without errors.
